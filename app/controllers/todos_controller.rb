@@ -12,7 +12,7 @@ class TodosController < ApplicationController
     end    
 
     def show 
-        jsone_response(@todo)
+        json_response(@todo)
     end
 
     def update 
