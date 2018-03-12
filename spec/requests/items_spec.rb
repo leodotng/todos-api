@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Items API' do
-    let(:user) { create(:user) }
     let!(:todo) { create(:todo) }
     let!(:items) { create_list(:item, 20, todo_id: todo.id) }
     let(:todo_id) { todo.id }
@@ -28,7 +27,7 @@ RSpec.describe 'Items API' do
             end
             
             it 'returns a not found message' do
-                expect(response.body).to match(/Couldn't find TODO/)
+                expect(response.body).to match(/Couldn't find Todo/)
             end
         end
     end
@@ -63,7 +62,7 @@ RSpec.describe 'Items API' do
         let(:valid_attributes) { { name: 'Visit Narnia', done: false } }
 
         context 'when request attributes are valid' do
-            before { post "/todos/#{todo_id}/items", params: :valid_attributes }
+            before { post "/todos/#{todo_id}/items", params: valid_attributes }
 
             it 'returns status code 201' do
                 expect(response).to have_http_status(201)
@@ -103,7 +102,7 @@ RSpec.describe 'Items API' do
             let(:id) { 0 }
 
             it 'returns status code 404' do
-                expect(response).to  have_http_status(404)
+                expect(response).to have_http_status(404)
             end
 
             it 'returns a not found message' do
