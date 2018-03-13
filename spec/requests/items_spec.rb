@@ -64,8 +64,10 @@ RSpec.describe 'Items API' do
         let(:valid_attributes) { { name: 'Visit Narnia', done: false }.to_json }
 
         context 'when request attributes are valid' do
-            before { post "/todos/#{todo_id}/items", params: valid_attributes, headers: headers }
-
+            before do 
+                post "/todos/#{todo_id}/items", params: valid_attributes, headers: headers
+            end
+            
             it 'returns status code 201' do
                 expect(response).to have_http_status(201)
             end

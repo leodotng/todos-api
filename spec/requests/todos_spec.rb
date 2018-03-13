@@ -84,7 +84,7 @@ RSpec.describe 'Todos API', type: :request do
     describe 'PUT /todos/:id' do
         let(:valid_attributes) { { title: 'Shopping' }.to_json }
 
-        context 'when the record exists' do
+         context 'when the record exists' do
             before { put "/todos/#{todo_id}", params: valid_attributes, headers: headers }
 
             it 'updates the record' do
