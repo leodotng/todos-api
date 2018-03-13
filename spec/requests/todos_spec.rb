@@ -75,8 +75,8 @@ RSpec.describe 'Todos API', type: :request do
             end
 
             it 'returns a validation failure message' do
-                expect(response.body)
-                .to match(/Validation failed: Created by can't be blank/)
+                expect(json['message'])
+                .to match(/Validation failed: Title can't be blank/)
             end
         end
     end
@@ -98,7 +98,7 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     describe 'DELETE /todos/:id' do
-        before { delete "/todos/#{todo_id}", paramgs: {} headers: headers }
+        before { delete "/todos/#{todo_id}", params: {}, headers: headers }
 
         it 'returns status code 204' do
             expect(response).to have_http_status(204)

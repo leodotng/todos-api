@@ -23,6 +23,7 @@ RSpec.describe 'Users API', type: :request do
                 expect(json['auth_token']).not_to be_nil
             end
         end
+        
         context 'when invalid request' do
             before { post '/signup', params: {}, headers: headers }
 
